@@ -1,19 +1,13 @@
 # Metex
 
-**TODO: Add description**
+GenServer example from The Little Elixir & OTP Guidebook
 
-## Installation
+## Installation & Example Usage
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `metex` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:metex, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/metex](https://hexdocs.pm/metex).
+1. mix deps.get
+2. iex -S mix
+3. Metex.Worker.start_link
+4. Metex.Worker.get_temperature "Seattle"
+5. Metex.Worker.get_stats
+6. Metex.Worker.stop
 
