@@ -68,7 +68,7 @@ defmodule Metex.Worker do
   ## Helper Functions
 
   defp temperature_of(location) do
-    url_for(location) |> HTTPoison.get |> parse_response
+    location |> url_for |> HTTPoison.get |> parse_response
   end
 
   defp url_for(location) do
@@ -85,11 +85,15 @@ defmodule Metex.Worker do
 
   defp compute_temperature(json) do
     try do
-      temp = (json["main"]["temp"] - 273.15) |> Float.round(1)
+      temp = json["main"]["temp"] |> convert_kelvin_to_celcius |> Float.round(1)
       {:ok, temp}
     rescue
       _ -> :error
     end
+  end
+
+  defp convert_kelvin_to_celcius(temp) do
+    temp - 273.15
   end
 
   defp apikey do
